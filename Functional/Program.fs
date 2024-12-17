@@ -19,7 +19,7 @@ let rec mainMenu books members borrowedBooks =
     printfn "8. Borrow Book"
     printfn "9. Return Book"
     printfn "10. List Available Books"
-    printfn "11. Borrowing History"
+    printfn "11. Your Borrowing Books"
     printfn "12. Exit"
     printf "Enter your choice: "
     
@@ -92,7 +92,7 @@ let rec mainMenu books members borrowedBooks =
     | "11" ->
         printf "Enter Member ID: "
         let memberId = Console.ReadLine()
-        Reports.borrowingHistory memberId
+        Reports.yourBorrowingBooks memberId
         mainMenu books members borrowedBooks
     | "12" ->
         printfn "Exiting Library Management System. Goodbye!"

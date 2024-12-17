@@ -13,7 +13,7 @@ let listAvailableBooks () =
         applyToEach (fun (book: Book) ->
             printfn "Title: %s, Author: %s, Genre: %s" book.Title book.Author book.Genre) availableBooks
 
-let borrowingHistory memberId =
+let yourBorrowingBooks memberId =
     let borrowedBookList = readJson<BorrowedBook> borrowedBooksFilePath
     let memberBorrowings = filterListByCondition (fun borrowedBook -> borrowedBook.MemberId = memberId) borrowedBookList
     if memberBorrowings.IsEmpty then
