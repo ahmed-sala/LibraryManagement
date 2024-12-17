@@ -3,6 +3,7 @@ module Book
 open System
 open Member
 open Utilities
+
 type Book = {
     Title: string
     Author: string
@@ -21,69 +22,67 @@ let booksFilePath = "books.json"
 let borrowedBooksFilePath = "borrowedBooks.json"
 
 let addBook title author genre =
-    let books = readJson<Book> booksFilePath
-    let bookExists = ref false
-    for book in books do
+    let bookList = readJson<Book> booksFilePath
+    let mutable bookExists = false
+    for book in bookList do
         if book.Title = title then
-            bookExists.Value <- true
-    if bookExists.Value then
+            bookExists <- true
+    if bookExists then
         printfn "Book with title '%s' already exists." title
     else
         let newBook = { Title = title; Author = author; Genre = genre; IsBorrowed = false; BorrowDate = None }
-        writeJson booksFilePath (newBook :: books)
+        writeJson booksFilePath (newBook :: bookList)
         printfn "Book '%s' added successfully." title
 
+
+
 let removeBook title =
-    let books = readJson<Book> booksFilePath
-    let bookToRemove = ref None
-    for book in books do
+    let bookList = readJson<Book> booksFilePath
+    let mutable bookToRemove = None
+    for book in bookList do
         if book.Title = title then
-                    bookToRemove.Value <- Some book
-    match bookToRemove.Value with
-    | Some book when book.IsBorrowed ->
-        printfn "Cannot remove book '%s' because it is currently borrowed." title
-    | Some _ ->
-        let updatedBooks = 
-            let mutable result = []
-            for b in books do
+            bookToRemove <- Some book
+    if bookToRemove <> None then
+        let book = bookToRemove.Value
+        if book.IsBorrowed then
+            printfn "Cannot remove book '%s' because it is currently borrowed." title
+        else
+            let mutable updatedBooks = []
+            for b in bookList do
                 if b.Title <> title then
-                    result <- b :: result
-            result
-        writeJson booksFilePath updatedBooks
-        printfn "Book '%s' removed successfully." title
-    | None ->
+                    updatedBooks <- b :: updatedBooks
+            writeJson booksFilePath updatedBooks
+            printfn "Book '%s' removed successfully." title
+    else
         printfn "Book with title '%s' not found." title
 
+
 let updateBook title newTitle newAuthor newGenre =
-    let books = readJson<Book> booksFilePath
-    let bookToUpdate = ref None
-    for book in books do
+    let bookList = readJson<Book> booksFilePath
+    let mutable bookToUpdate = None
+    for book in bookList do
         if book.Title = title then
-            bookToUpdate.Value <- Some book
-    match bookToUpdate.Value with
-    | Some book ->
+            bookToUpdate <- Some book
+    if bookToUpdate <> None then
+        let book = bookToUpdate.Value
         let updatedBook = { book with Title = newTitle; Author = newAuthor; Genre = newGenre }
-        let updatedBooks = 
-            let mutable result = []
-            for b in books do
-                if b.Title = title then
-                    result <- updatedBook :: result
-                else
-                    result <- b :: result
-            result
+        let mutable updatedBooks = []
+        for b in bookList do
+            if b.Title = title then
+                updatedBooks <- updatedBook :: updatedBooks
+            else
+                updatedBooks <- b :: updatedBooks
         writeJson booksFilePath updatedBooks
         printfn "Book '%s' updated successfully." title
-    | None ->
+    else
         printfn "Book with title '%s' not found." title
 
 let searchBooks (searchTerm: string) =
-    let books = readJson<Book> booksFilePath
-    let results = 
-        let mutable result = []
-        for b in books do
-            if b.Title.Contains(searchTerm) || b.Author.Contains(searchTerm) || b.Genre.Contains(searchTerm) then
-                result <- b :: result
-        result
+    let bookList = readJson<Book> booksFilePath
+    let mutable results = []
+    for b in bookList do
+        if b.Title.Contains(searchTerm) || b.Author.Contains(searchTerm) || b.Genre.Contains(searchTerm) then
+            results <- b :: results
     if results.IsEmpty then
         printfn "No books found matching '%s'." searchTerm
     else
@@ -91,69 +90,67 @@ let searchBooks (searchTerm: string) =
         for book in results do
             printfn "Title: %s, Author: %s, Genre: %s, Status: %s"
                     book.Title book.Author book.Genre (if book.IsBorrowed then "Borrowed" else "Available")
+
+
 let borrowBook title memberId =
     let members = readJson<Member> membersFilePath
-    let memberExists = ref false
+    let mutable memberExists = false
     for m in members do
         if m.MemberId = memberId then
-            memberExists.Value <- true
-    if not memberExists.Value then
+            memberExists <- true
+    if not memberExists then
         printfn "Member with ID '%s' not found." memberId
     else
-        let books = readJson<Book> booksFilePath
-        let bookToBorrow = ref None
-        for b in books do
+        let bookList = readJson<Book> booksFilePath
+        let mutable bookToBorrow = None
+        for b in bookList do
             if b.Title = title then
-                bookToBorrow.Value <- Some b       
-        match bookToBorrow.Value with
-        | Some b when b.IsBorrowed ->
-            printfn "Book '%s' is already borrowed." title
-        | Some b ->
-            let updatedBook = { b with IsBorrowed = true; BorrowDate = Some DateTime.Now }
-            let updatedBooks = 
-                let mutable result = []
-                for b in books do
+                bookToBorrow <- Some b
+        if bookToBorrow <> None then
+            let book = bookToBorrow.Value
+            if book.IsBorrowed then
+                printfn "Book '%s' is already borrowed." title
+            else
+                let updatedBook = { book with IsBorrowed = true; BorrowDate = Some DateTime.Now }
+                let mutable updatedBooks = []
+                for b in bookList do
                     if b.Title = title then
-                        result <- updatedBook :: result
+                        updatedBooks <- updatedBook :: updatedBooks
                     else
-                        result <- b :: result
-                result
-            writeJson booksFilePath updatedBooks
-            let borrowedBooks = readJson<BorrowedBook> borrowedBooksFilePath
-            let newBorrowedBook = { Title = title; MemberId = memberId; BorrowDate = DateTime.Now }
-            writeJson borrowedBooksFilePath (newBorrowedBook :: borrowedBooks)
-            printfn "Book '%s' borrowed successfully on %s." title (updatedBook.BorrowDate.Value.ToString("yyyy-MM-dd"))
-        | None ->
+                        updatedBooks <- b :: updatedBooks
+                writeJson booksFilePath updatedBooks
+                let borrowedBooks = readJson<BorrowedBook> borrowedBooksFilePath
+                let newBorrowedBook = { Title = title; MemberId = memberId; BorrowDate = DateTime.Now }
+                writeJson borrowedBooksFilePath (newBorrowedBook :: borrowedBooks)
+                printfn "Book '%s' borrowed successfully on %s." title (updatedBook.BorrowDate.Value.ToString("yyyy-MM-dd"))
+        else
             printfn "Book with title '%s' not found." title
 
 let returnBook title =
-    let books = readJson<Book> booksFilePath
-    let bookToReturn = ref None
-    for b in books do
+    let bookList = readJson<Book> booksFilePath
+    let mutable bookToReturn = None
+    for b in bookList do
         if b.Title = title then
-            bookToReturn.Value <- Some b
-    match bookToReturn.Value with
-    | Some b when not b.IsBorrowed ->
-        printfn "Book '%s' is not currently borrowed." title
-    | Some b ->
-        let updatedBook = { b with IsBorrowed = false; BorrowDate = None }
-        let updatedBooks = 
-            let mutable result = []
-            for b in books do
+            bookToReturn <- Some b
+    if bookToReturn <> None then
+        let book = bookToReturn.Value
+        if not book.IsBorrowed then
+            printfn "Book '%s' is not currently borrowed." title
+        else
+            let updatedBook = { book with IsBorrowed = false; BorrowDate = None }
+            let mutable updatedBooks = []
+            for b in bookList do
                 if b.Title = title then
-                    result <- updatedBook :: result
+                    updatedBooks <- updatedBook :: updatedBooks
                 else
-                    result <- b :: result
-            result
-        writeJson booksFilePath updatedBooks
-        let borrowedBooks = readJson<BorrowedBook> borrowedBooksFilePath
-        let updatedBorrowedBooks = 
-            let mutable result = []
+                    updatedBooks <- b :: updatedBooks
+            writeJson booksFilePath updatedBooks
+            let borrowedBooks = readJson<BorrowedBook> borrowedBooksFilePath
+            let mutable updatedBorrowedBooks = []
             for bb in borrowedBooks do
                 if bb.Title <> title then
-                    result <- bb :: result
-            result
-        writeJson borrowedBooksFilePath updatedBorrowedBooks
-        printfn "Book '%s' returned successfully." title
-    | None ->
+                    updatedBorrowedBooks <- bb :: updatedBorrowedBooks
+            writeJson borrowedBooksFilePath updatedBorrowedBooks
+            printfn "Book '%s' returned successfully." title
+    else
         printfn "Book with title '%s' not found." title

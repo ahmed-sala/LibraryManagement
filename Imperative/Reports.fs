@@ -17,7 +17,7 @@ let listAvailableBooks () =
         for b in availableBooks do
             printfn "Title: %s, Author: %s, Genre: %s" b.Title b.Author b.Genre
 
-let borrowingHistory memberId =
+let yourBorrowingBooks memberId =
     let borrowedBooks = readJson<BorrowedBook> borrowedBooksFilePath
     let memberBorrowings = 
         let mutable result = []
