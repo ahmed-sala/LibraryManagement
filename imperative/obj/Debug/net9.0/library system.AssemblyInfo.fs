@@ -10,7 +10,7 @@ open System.Reflection
 [<assembly: System.Reflection.AssemblyCompanyAttribute("library system")>]
 [<assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")>]
 [<assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")>]
-[<assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")>]
+[<assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a118dd2c693f433096e5e5aea82c82ecc2910b21")>]
 [<assembly: System.Reflection.AssemblyProductAttribute("library system")>]
 [<assembly: System.Reflection.AssemblyTitleAttribute("library system")>]
 [<assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")>]

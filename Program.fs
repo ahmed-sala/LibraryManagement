@@ -321,6 +321,7 @@ let rec mainMenu books members borrowedBooks =
 [<EntryPoint>]
 
 let mainEntry argv =
+    printfn "Functional Library Management System"
     initializeFile booksFilePath
     initializeFile membersFilePath
     initializeFile borrowedBooksFilePath

@@ -58,3 +58,11 @@ C:\Users\anofa\OneDrive\Desktop\library system\obj\Debug\net9.0\refint\library s
 C:\Users\anofa\OneDrive\Desktop\library system\obj\Debug\net9.0\library system.pdb
 C:\Users\anofa\OneDrive\Desktop\library system\obj\Debug\net9.0\library system.genruntimeconfig.cache
 C:\Users\anofa\OneDrive\Desktop\library system\obj\Debug\net9.0\ref\library system.dll
+C:\Users\20000\Downloads\LibraryManagement\LibraryManagement\library system\obj\Debug\net9.0\library system.fsproj.AssemblyReference.cache
+C:\Users\20000\Downloads\LibraryManagement\LibraryManagement\library system\obj\Debug\net9.0\library system.AssemblyInfoInputs.cache
+C:\Users\20000\Downloads\LibraryManagement\LibraryManagement\library system\obj\Debug\net9.0\library system.AssemblyInfo.fs
+C:\Users\20000\Downloads\LibraryManagement\LibraryManagement\library system\obj\Debug\net9.0\library system.fsproj.CoreCompileInputs.cache
+C:\Users\20000\Downloads\LibraryManagement\LibraryManagement\library system\obj\Debug\net9.0\library system.sourcelink.json
+C:\Users\20000\Downloads\LibraryManagement\LibraryManagement\library system\obj\Debug\net9.0\library system.dll
+C:\Users\20000\Downloads\LibraryManagement\LibraryManagement\library system\obj\Debug\net9.0\refint\library system.dll
+C:\Users\20000\Downloads\LibraryManagement\LibraryManagement\library system\obj\Debug\net9.0\library system.pdb

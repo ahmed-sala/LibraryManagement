@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\anofa\\Downloads\\LibraryManagement\\LibraryManagement\\LibraryManagement.fsproj": {}
+    "C:\\Users\\20000\\Downloads\\LibraryManagement\\LibraryManagement\\LibraryManagement.fsproj": {}
   },
   "projects": {
-    "C:\\Users\\anofa\\Downloads\\LibraryManagement\\LibraryManagement\\LibraryManagement.fsproj": {
+    "C:\\Users\\20000\\Downloads\\LibraryManagement\\LibraryManagement\\LibraryManagement.fsproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\anofa\\Downloads\\LibraryManagement\\LibraryManagement\\LibraryManagement.fsproj",
+        "projectUniqueName": "C:\\Users\\20000\\Downloads\\LibraryManagement\\LibraryManagement\\LibraryManagement.fsproj",
         "projectName": "LibraryManagement",
-        "projectPath": "C:\\Users\\anofa\\Downloads\\LibraryManagement\\LibraryManagement\\LibraryManagement.fsproj",
-        "packagesPath": "C:\\Users\\anofa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\anofa\\Downloads\\LibraryManagement\\LibraryManagement\\obj\\",
+        "projectPath": "C:\\Users\\20000\\Downloads\\LibraryManagement\\LibraryManagement\\LibraryManagement.fsproj",
+        "packagesPath": "C:\\Users\\20000\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\20000\\Downloads\\LibraryManagement\\LibraryManagement\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\anofa\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\20000\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"

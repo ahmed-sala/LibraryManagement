@@ -152,19 +152,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\anofa\\.nuget\\packages\\": {}
+    "C:\\Users\\20000\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\anofa\\OneDrive\\Desktop\\library system\\library system.fsproj",
+      "projectUniqueName": "C:\\Users\\20000\\Downloads\\LibraryManagement\\LibraryManagement\\library system\\library system.fsproj",
       "projectName": "library system",
-      "projectPath": "C:\\Users\\anofa\\OneDrive\\Desktop\\library system\\library system.fsproj",
-      "packagesPath": "C:\\Users\\anofa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\anofa\\OneDrive\\Desktop\\library system\\obj\\",
+      "projectPath": "C:\\Users\\20000\\Downloads\\LibraryManagement\\LibraryManagement\\library system\\library system.fsproj",
+      "packagesPath": "C:\\Users\\20000\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\20000\\Downloads\\LibraryManagement\\LibraryManagement\\library system\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\anofa\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\20000\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"

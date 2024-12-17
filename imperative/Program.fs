@@ -266,6 +266,7 @@ let borrowingHistory memberId =
 
 [<EntryPoint>]
 let main argv =
+printf "Imparative Programming Library Management System\n\n"
     initializeFile booksFilePath
     initializeFile membersFilePath
     initializeFile borrowedBooksFilePath

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "YSrVrTT7ae8=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\20000\\Downloads\\LibraryManagement\\LibraryManagement\\library system\\library system.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\20000\\.nuget\\packages\\fsharp.core\\9.0.100\\fsharp.core.9.0.100.nupkg.sha512",
+    "C:\\Users\\20000\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
