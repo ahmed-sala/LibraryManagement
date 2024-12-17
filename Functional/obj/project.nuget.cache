@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "risVWFbKk8c=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\20000\\Downloads\\LibraryManagement\\LibraryManagement\\Functional\\LibraryManagement.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\20000\\.nuget\\packages\\fsharp.core\\9.0.100\\fsharp.core.9.0.100.nupkg.sha512"
+  ],
+  "logs": []
+}
